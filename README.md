@@ -6,7 +6,9 @@
 
 ## Usage
 
-The purpose of this project is to create a matching game for a web browser. 16 cards are randomly shuffled at the start of each game. Two cards are clicked for each turn, if the two cards match, they will remain flipped, if not they will both turn back over. Each two clicks will increase the "move count" (which will affect final score) and the time it takes to match all of the cards wil be recorded for the final score as well.
+The purpose of this project is to create a matching game for a web browser. 16 cards are randomly shuffled at the start of each game. Two cards are clicked for each turn, if the two cards match, they will remain flipped, if not they will both turn back over. Each two clicks will increase the "move count" (which will affect final score) and the time it takes to match all of the cards will be recorded for the final score as well (in seconds).
+
+When a game is "won" a game over modal will appear and display the score, the total time and give the option to play again.
 
 There is a restart button that allows the game to be reset at any time.
 

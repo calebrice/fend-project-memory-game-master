@@ -22,7 +22,7 @@ let objects = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', '
 
     stars3 = 14,
     stars2 = 18,
-    star1 = 22,
+    star1 = 22;
 
 
 /* This function was provided. It is supposed to shuffle the deck of cards */
@@ -94,11 +94,12 @@ function gameOver(moves, score) {
 $restart.bind('click', function (confirmed) {
   if(confirmed) {
     $rating.removeClass('fa-star-o').addClass('fa-star');
+    allOpen = [];
     init();
   }
 });
 
-/* create card listener function, watchs for match/non-match */
+/* create card listener function, watchs for match/non-match, flips card over after click, keeps cards flipped if matched */
 
 let addCardListener = function () {
 
@@ -107,7 +108,7 @@ let addCardListener = function () {
 
     if ($this.hasClass('show') || $this.hasClass('match')) { return true; }
 
-    let card = $this.context.innerHTML; /* I think this line is an issue, not sure how */
+    let card = $this.html();
     $this.addClass('open show');
     allOpen.push(card);
 
@@ -115,16 +116,18 @@ let addCardListener = function () {
         if (card === allOpen[0]) {
             $deck.find('.open').addClass('match');
             setTimeout(function () {
-                $deck.find('open').removeClass('open show');
+                $deck.find('.open').removeClass('open show');
             }, wait);
             match++;
     } else {
-      $deck.find('.open').addClass('.notmatch');
+      $deck.find('.open').addClass('notmatch');
       setTimeout(function () {
         $deck.find('.open').removeClass('open show');
       }, wait / 1.5);
     }
-    allOpen = [];
+    if (allOpen.length > 1) {
+		allOpen = [];
+	}
     moves++;
     rating(moves);
     $moves.html(moves);
@@ -133,7 +136,7 @@ let addCardListener = function () {
     if (totalCard === match) {
       rating(moves);
       let score = rating(moves).score;
-      setTimeout(fucntion () {
+      setTimeout(function () {
         gameOver(moves, score);
       }, 500);
     }
@@ -155,15 +158,3 @@ function resetTimer(timer) {
 }
 
 init();
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */

@@ -1,20 +1,15 @@
 # Memory Game Project
 
-## Table of Contents
+## Download
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* https://github.com/calebrice/fend-project-memory-game-master.git
 
-## Instructions
+## Usage
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The purpose of this project is to create a matching game for a web browser. 16 cards are randomly shuffled at the start of each game. Two cards are clicked for each turn, if the two cards match, they will remain flipped, if not they will both turn back over. Each two clicks will increase the "move count" (which will affect final score) and the time it takes to match all of the cards wil be recorded for the final score as well.
 
-To get started, open `js/app.js` and start building out the app's functionality
+There is a restart button that allows the game to be reset at any time.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+## Bugs
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+I recently fixed a bug that occurs when the game is reset when one card is flipped. This would cause the first click of the new game to result one move with only one card clicked. If the card clicked in the new game matched the card in the previous, the card would count as a match.
